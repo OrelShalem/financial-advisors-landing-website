@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image"
 import { useEffect, useRef } from "react"
 import { Playfair_Display, Inter } from 'next/font/google'
 
@@ -189,6 +190,16 @@ export default function Page() {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="pt-32 pb-20 px-6 relative bg-gradient-to-b from-rose-100/30 to-white">
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute w-full h-full bg-gradient-to-b from-white/95 to-white/80 z-10"></div>
+            <Image 
+              src="/images/photo-1.jpg"
+              alt="רקע כלכלי"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+          </div>
           <div className="max-w-[1000px] mx-auto text-center relative z-10">
             <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight fade-in text-gray-900 font-rubik leading-tight">
               מה אם נגיד לך<br />
@@ -286,28 +297,71 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="py-24 px-6 bg-gradient-to-b from-white to-rose-50">
+        {/* Success Stories Section */}
+        <section className="py-24 px-6 bg-white">
           <div className="max-w-[1000px] mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 font-rubik">מה אומרים עליי?</h2>
-              <p className="text-xl text-gray-600">זוגות שכבר עשו את הצעד הראשון לעתיד כלכלי טוב יותר</p>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 font-rubik">סיפורי הצלחה</h2>
+              <p className="text-xl text-gray-600">זוגות שכבר בדרך להצלחה כלכלית</p>
             </div>
-
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="scroll-animation scroll-delay-1 p-8 rounded-3xl bg-white border border-rose-100 shadow-lg">
-                <p className="text-lg text-gray-600 leading-relaxed mb-6">״אושרי עזרה לנו להבין את המצב הכלכלי שלנו בצורה ברורה, ונתנה לנו כלים מעשיים להתנהלות נכונה. תוך חודשיים כבר ראינו שינוי משמעותי בחסכונות שלנו!״</p>
-                <div className="font-medium text-gray-900">
-                  <p>רועי ושירה</p>
-                  <p className="text-rose-600 text-sm">זוג צעיר מתל אביב</p>
+              <div className="scroll-animation scroll-delay-1">
+                <div className="relative h-[300px] rounded-3xl overflow-hidden mb-6">
+                  <Image 
+                    src="/images/photo-2.jpg"
+                    alt="סיפור הצלחה 1"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
+                <h3 className="text-2xl font-bold mb-4 text-gray-900">״תוך שנה הצלחנו לחסוך למקדמה לדירה״</h3>
+                <p className="text-gray-600">דן ומיכל, זוג צעיר מחיפה, הצליחו לחסוך 200,000 ₪ בשנה אחת בלבד</p>
               </div>
+              
+              <div className="scroll-animation scroll-delay-2">
+                <div className="relative h-[300px] rounded-3xl overflow-hidden mb-6">
+                  <Image 
+                    src="/images/photo-3.jpg"
+                    alt="סיפור הצלחה 2"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-gray-900">״סוף סוף יש לנו תקציב מסודר״</h3>
+                <p className="text-gray-600">רועי ושירה למדו לנהל נכון את התקציב החודשי ולחסוך מבלי להתקמצן</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-              <div className="scroll-animation scroll-delay-2 p-8 rounded-3xl bg-white border border-rose-100 shadow-lg">
-                <p className="text-lg text-gray-600 leading-relaxed mb-6">״חשבנו שנצטרך לחכות שנים כדי לקנות דירה, אבל בזכות התכנית שאושרי בנתה איתנו, הצלחנו להגיע למטרה הרבה יותר מהר ממה שחשבנו.״</p>
-                <div className="font-medium text-gray-900">
-                  <p>דן ומיכל</p>
-                  <p className="text-rose-600 text-sm">זוג צעיר מחיפה</p>
+        {/* Testimonials Section with Image */}
+        <section className="py-24 px-6 bg-gradient-to-b from-white to-rose-50">
+          <div className="max-w-[1000px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="relative h-[500px] rounded-3xl overflow-hidden">
+                <Image 
+                  src="/images/photo-1.jpg"
+                  alt="ייעוץ כלכלי"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 font-rubik">למה לבחור בי?</h2>
+                <div className="space-y-6">
+                  <div className="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 className="text-xl font-bold mb-2 text-gray-900">ניסיון מוכח</h3>
+                    <p className="text-gray-600">עזרתי ליותר מ-50 זוגות צעירים להגיע ליציבות כלכלית</p>
+                  </div>
+                  <div className="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 className="text-xl font-bold mb-2 text-gray-900">גישה אישית</h3>
+                    <p className="text-gray-600">כל תכנית מותאמת במיוחד לצרכים ולמטרות שלכם</p>
+                  </div>
+                  <div className="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 className="text-xl font-bold mb-2 text-gray-900">תוצאות מהירות</h3>
+                    <p className="text-gray-600">תראו שיפור משמעותי כבר בחודשים הראשונים</p>
+                  </div>
                 </div>
               </div>
             </div>

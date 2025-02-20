@@ -403,7 +403,7 @@ export default function Page() {
                     required
                     className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors"
                     placeholder="הכניסו את מספר הטלפון שלכם"
-                    dir="ltr"
+                    dir="rtl"
                   />
                 </div>
                 <div>
@@ -417,7 +417,7 @@ export default function Page() {
                     required
                     className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors"
                     placeholder="הכניסו את כתובת האימייל שלכם"
-                    dir="ltr"
+                    dir="rtl"
                   />
                 </div>
                 <div>

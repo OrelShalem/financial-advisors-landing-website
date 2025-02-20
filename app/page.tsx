@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Playfair_Display, Inter } from 'next/font/google'
 
 const playfair = Playfair_Display({ 
@@ -18,7 +18,39 @@ const inter = Inter({
   display: 'swap',
 })
 
+// Language switcher component
+const LanguageSwitcher = ({ currentLang, onSwitch }: { currentLang: 'he' | 'en', onSwitch: () => void }) => (
+  <button
+    onClick={onSwitch}
+    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-rose-100 text-rose-800 hover:bg-rose-50 transition-colors"
+  >
+    {currentLang === 'he' ? 'English' : 'עברית'}
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+    </svg>
+  </button>
+);
+
+// Logo component
+const Logo = () => (
+  <div className="flex items-center gap-3">
+    <div className="relative w-12 h-12">
+      <Image
+        src="/images/lmm-icon.png"
+        alt="LMM Logo"
+        fill
+        className="object-contain"
+      />
+    </div>
+    <div className="text-left">
+      <div className="text-2xl font-playfair font-bold text-rose-800">LMM</div>
+      <div className="text-sm text-rose-600">Love, Mind & Money</div>
+    </div>
+  </div>
+);
+
 export default function Page() {
+  const [lang, setLang] = useState<'he' | 'en'>('he');
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -61,8 +93,49 @@ export default function Page() {
     loadTally();
   }, []);
 
+  const content = {
+    he: {
+      nav: {
+        contact: 'צרי קשר',
+      },
+      hero: {
+        title: 'Love, Mind & Money',
+        subtitle: 'by Oshri Shalem',
+        questions: [
+          'מה אם נגיד לך שאפשר לחסוך ולהרוויח בלי להתאמץ יותר מדי?',
+          'שיהיה לך תקציב מסודר בלי לוותר על החיים הטובים?',
+          'שתוכלו לקנות דירה בלי לחכות עשר שנים?'
+        ],
+        stats: 'השנה, עזרתי ליותר מ-50 זוגות צעירים',
+        statsHighlight: 'לבנות תכנית כלכלית מנצחת',
+        description: 'עם ליווי אישי, תכנון מדויק והכוונה מקצועית - גם אתם יכולים להגיע ליציבות כלכלית',
+        cta: 'לפגישת ייעוץ ראשונה חינם'
+      },
+      // ... rest of Hebrew content
+    },
+    en: {
+      nav: {
+        contact: 'Contact Us',
+      },
+      hero: {
+        title: 'Love, Mind & Money',
+        subtitle: 'by Oshri Shalem',
+        questions: [
+          'What if we told you that you can save and earn without too much effort?',
+          'That you can have a structured budget without giving up the good life?',
+          'That you can buy a house without waiting ten years?'
+        ],
+        stats: 'This year, I helped more than 50 young couples',
+        statsHighlight: 'build a winning financial plan',
+        description: 'With personal guidance, precise planning, and professional direction - you too can achieve financial stability',
+        cta: 'Book Your Free First Consultation'
+      },
+      // ... rest of English content
+    }
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen" dir={lang === 'he' ? 'rtl' : 'ltr'}>
       <style jsx global>{`
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(20px); }
@@ -167,10 +240,14 @@ export default function Page() {
 
       {/* Navigation */}
       <header className="flex items-center justify-between py-5 px-6 bg-white/80 backdrop-blur-sm border-b border-rose-100 sticky top-0 z-50">
-        <Link href="/" className="text-2xl md:text-3xl font-bold text-rose-800 font-rubik tracking-tight">
-          אושרי שלם
+        <Link href="/" className="text-2xl md:text-3xl font-bold tracking-tight">
+          <Logo />
         </Link>
         <nav className="flex items-center gap-4">
+          <LanguageSwitcher 
+            currentLang={lang} 
+            onSwitch={() => setLang(lang === 'he' ? 'en' : 'he')} 
+          />
           <Button 
             variant="outline"
             size="lg"
@@ -182,7 +259,7 @@ export default function Page() {
               });
             }}
           >
-            צרי קשר
+            {content[lang].nav.contact}
           </Button>
         </nav>
       </header>
@@ -202,31 +279,28 @@ export default function Page() {
           </div>
           <div className="max-w-[1000px] mx-auto text-center relative z-10">
             <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight fade-in text-gray-900 font-rubik leading-tight">
-              מה אם נגיד לך<br />
-              <span className="text-rose-600">שאפשר לחסוך ולהרוויח</span><br />
-              בלי להתאמץ יותר מדי?
+              {content[lang].hero.title}
+              <br />
+              <span className="text-rose-600">{content[lang].hero.subtitle}</span><br />
+              {content[lang].hero.questions.map((question, index) => (
+                <span key={index} className="text-rose-600">{question}<br /></span>
+              ))}
             </h1>
             
             <div className="space-y-8 mb-12 text-xl md:text-2xl text-gray-600 fade-in delay-1">
-              <p className="leading-relaxed">
-                שיהיה לך תקציב מסודר בלי לוותר על החיים הטובים?
-              </p>
-              <p className="leading-relaxed">
-                שתוכלו לקנות דירה בלי לחכות עשר שנים?
-              </p>
-              <p className="leading-relaxed">
-                שתוכלו לבנות עתיד כלכלי בטוח לכם ולילדים שלכם?
-              </p>
+              {content[lang].hero.questions.map((question, index) => (
+                <p key={index} className="leading-relaxed">{question}</p>
+              ))}
             </div>
 
             <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 mb-12 fade-in delay-2">
               <p className="text-2xl md:text-3xl font-medium text-gray-900 mb-6">
-                השנה, עזרתי ליותר מ-50 זוגות צעירים
+                {content[lang].hero.stats}
                 <br />
-                <span className="text-rose-600 font-bold">לבנות תכנית כלכלית מנצחת</span>
+                <span className="text-rose-600 font-bold">{content[lang].hero.statsHighlight}</span>
               </p>
               <p className="text-xl text-gray-600">
-                עם ליווי אישי, תכנון מדויק והכוונה מקצועית - גם אתם יכולים להגיע ליציבות כלכלית
+                {content[lang].hero.description}
               </p>
             </div>
 
@@ -240,7 +314,7 @@ export default function Page() {
                 });
               }}
             >
-              לפגישת ייעוץ ראשונה חינם
+              {content[lang].hero.cta}
             </Button>
           </div>
         </section>

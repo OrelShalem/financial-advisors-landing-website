@@ -388,7 +388,7 @@ export default function Page() {
                     name="name"
                     id="name"
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors text-gray-900"
                     placeholder="הכניסו את שמכם המלא"
                   />
                 </div>
@@ -401,7 +401,7 @@ export default function Page() {
                     name="phone"
                     id="phone"
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors text-gray-900"
                     placeholder="הכניסו את מספר הטלפון שלכם"
                     dir="rtl"
                   />
@@ -415,7 +415,7 @@ export default function Page() {
                     name="email"
                     id="email"
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors text-gray-900"
                     placeholder="הכניסו את כתובת האימייל שלכם"
                     dir="rtl"
                   />
@@ -428,7 +428,7 @@ export default function Page() {
                     name="message"
                     id="message"
                     rows={4}
-                    className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors text-gray-900"
                     placeholder="ספרו לי על המצב הכלכלי שלכם והיעדים שלכם"
                   />
                 </div>

@@ -36,7 +36,7 @@ const Logo = () => (
   <div className="flex items-center gap-3">
     <div className="relative w-12 h-12">
       <Image
-        src="/images/lmm-icon.png"
+        src="/images/newLogo.jpg"
         alt="LMM Logo"
         fill
         className="object-contain"

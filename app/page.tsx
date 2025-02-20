@@ -570,28 +570,30 @@ export default function Page() {
                 className="space-y-4 md:space-y-6 text-right"
               >
                 {Object.entries(content[lang].contact.form).map(([key, value]) => (
-                  <div key={key}>
-                    <label htmlFor={key} className="block text-base md:text-lg font-medium text-gray-700 mb-2">
-                      {value}
-                    </label>
-                    {key === 'message' ? (
-                      <textarea
-                        name={key}
-                        id={key}
-                        rows={4}
-                        className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors text-gray-900"
-                      />
-                    ) : (
-                      <input
-                        type={key === 'email' ? 'email' : key === 'phone' ? 'tel' : 'text'}
-                        name={key}
-                        id={key}
-                        required
-                        className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors text-gray-900"
-                      />
-                    )}
-                  </div>
-                )}
+                  key !== 'submit' && (
+                    <div key={key}>
+                      <label htmlFor={key} className="block text-base md:text-lg font-medium text-gray-700 mb-2">
+                        {value}
+                      </label>
+                      {key === 'message' ? (
+                        <textarea
+                          name={key}
+                          id={key}
+                          rows={4}
+                          className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors text-gray-900"
+                        />
+                      ) : (
+                        <input
+                          type={key === 'email' ? 'email' : key === 'phone' ? 'tel' : 'text'}
+                          name={key}
+                          id={key}
+                          required
+                          className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors text-gray-900"
+                        />
+                      )}
+                    </div>
+                  )
+                ))}
                 <div className="text-center pt-4 md:pt-6">
                   <button
                     type="submit"

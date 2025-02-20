@@ -34,17 +34,14 @@ const LanguageSwitcher = ({ currentLang, onSwitch }: { currentLang: 'he' | 'en',
 // Logo component
 const Logo = () => (
   <div className="flex items-center gap-3">
-    <div className="relative w-12 h-12">
+    <div className="relative w-48">
       <Image
-        src="/images/lmm-icon.png"
-        alt="LMM Logo"
-        fill
+        src="/images/llm-logo.jpg"
+        alt="LLM Logo"
+        width={200}
+        height={100}
         className="object-contain"
       />
-    </div>
-    <div className="text-left">
-      <div className="text-2xl font-playfair font-bold text-rose-800">LMM</div>
-      <div className="text-sm text-rose-600">Love, Mind & Money</div>
     </div>
   </div>
 );
@@ -375,7 +372,7 @@ export default function Page() {
       `}</style>
 
       {/* Navigation */}
-      <header className="flex items-center justify-between py-5 px-6 bg-white/80 backdrop-blur-sm border-b border-rose-100 sticky top-0 z-50">
+      <header className="flex items-center justify-between py-4 px-6 bg-white/90 backdrop-blur-sm border-b border-rose-100 sticky top-0 z-50">
         <Link href="/" className="text-2xl md:text-3xl font-bold tracking-tight">
           <Logo />
         </Link>
@@ -402,55 +399,41 @@ export default function Page() {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="pt-24 md:pt-32 pb-16 md:pb-20 px-6 relative bg-gradient-to-b from-rose-100/30 to-white">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute w-full h-full bg-gradient-to-b from-white/95 to-white/80 z-10"></div>
-            <Image 
-              src="/images/photo-1.jpg"
-              alt="Financial background"
-              fill
-              className="object-cover object-center"
-              priority
-            />
-          </div>
-          <div className="max-w-[1000px] mx-auto text-center relative z-10">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight fade-in text-gray-900 font-playfair">
-              {content[lang].hero.title}
-            </h1>
-            <p className="text-2xl md:text-3xl text-rose-600 mb-12 font-medium">
-              {content[lang].hero.subtitle}
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-gray-800">
-              {content[lang].hero.mainQuestion}
-            </h2>
-            
-            <div className="space-y-6 mb-12 text-xl md:text-2xl text-gray-600 fade-in delay-1">
-              {content[lang].hero.questions.map((question, index) => (
-                <p key={index} className="leading-relaxed">{question}</p>
-              ))}
-            </div>
+        <section className="min-h-screen relative px-6 py-20 md:py-32 bg-[#FDF6F2]">
+          <div className="max-w-[1000px] mx-auto relative z-10">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-[#8B1B3F]">
+                {content[lang].hero.mainQuestion}
+              </h2>
+              
+              <div className="space-y-6 mb-12 text-xl md:text-2xl text-gray-700 fade-in delay-1">
+                {content[lang].hero.questions.map((question, index) => (
+                  <p key={index} className="leading-relaxed">{question}</p>
+                ))}
+              </div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 mb-12 fade-in delay-2">
-              <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-900 mb-4">
-                {content[lang].hero.stats}
-              </p>
-              <p className="text-xl md:text-2xl text-rose-600 font-bold">
-                {content[lang].hero.statsHighlight}
-              </p>
-            </div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 mb-12 fade-in delay-2 border border-[#8B1B3F]/10">
+                <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-900 mb-4">
+                  {content[lang].hero.stats}
+                </p>
+                <p className="text-xl md:text-2xl text-[#8B1B3F] font-bold">
+                  {content[lang].hero.statsHighlight}
+                </p>
+              </div>
 
-            <Button 
-              size="lg" 
-              className="rounded-full bg-rose-600 hover:bg-rose-700 text-white font-medium px-8 md:px-12 py-6 md:py-8 text-lg md:text-xl shadow-lg shadow-rose-200/50 transition-all hover:shadow-xl hover:shadow-rose-200/50 fade-in delay-3"
-              onClick={() => {
-                document.getElementById('contact-form')?.scrollIntoView({ 
-                  behavior: 'smooth',
-                  block: 'center'
-                });
-              }}
-            >
-              {content[lang].hero.cta}
-            </Button>
+              <Button 
+                size="lg" 
+                className="rounded-full bg-[#8B1B3F] hover:bg-[#6B1431] text-white font-medium px-8 md:px-12 py-6 md:py-8 text-lg md:text-xl shadow-lg shadow-[#8B1B3F]/20 transition-all hover:shadow-xl hover:shadow-[#8B1B3F]/30 fade-in delay-3"
+                onClick={() => {
+                  document.getElementById('contact-form')?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                  });
+                }}
+              >
+                {content[lang].hero.cta}
+              </Button>
+            </div>
           </div>
         </section>
 
@@ -458,26 +441,26 @@ export default function Page() {
         <section className="py-20 md:py-24 px-6 bg-white">
           <div className="max-w-[1000px] mx-auto">
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-gray-900 font-playfair">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-[#8B1B3F]">
                 {content[lang].services.title}
               </h2>
-              <p className="text-lg md:text-xl text-gray-600">
+              <p className="text-lg md:text-xl text-gray-700">
                 {content[lang].services.subtitle}
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               {content[lang].services.items.map((item, index) => (
-                <div key={index} className="scroll-animation scroll-delay-1 p-6 md:p-8 rounded-3xl bg-gradient-to-br from-rose-50 to-white border border-rose-100 shadow-lg hover:shadow-xl transition-shadow">
-                  <div className="w-12 h-12 md:w-14 md:h-14 bg-rose-100 rounded-2xl flex items-center justify-center mb-4 md:mb-6">
-                    <svg className="w-6 h-6 md:w-7 md:h-7 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div key={index} className="scroll-animation scroll-delay-1 p-6 md:p-8 rounded-3xl bg-gradient-to-br from-[#FDF6F2] to-white border border-[#8B1B3F]/10 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="w-12 h-12 md:w-14 md:h-14 bg-[#FDF6F2] rounded-2xl flex items-center justify-center mb-4 md:mb-6">
+                    <svg className="w-6 h-6 md:w-7 md:h-7 text-[#8B1B3F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                     </svg>
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900 font-rubik">
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-[#8B1B3F]">
                     {item.title}
                   </h3>
-                  <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+                  <p className="text-base md:text-lg text-gray-700 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -487,13 +470,13 @@ export default function Page() {
         </section>
 
         {/* Success Stories Section */}
-        <section className="py-20 md:py-24 px-6 bg-gradient-to-b from-white to-rose-50">
+        <section className="py-20 md:py-24 px-6 bg-gradient-to-b from-white to-[#FDF6F2]">
           <div className="max-w-[1000px] mx-auto">
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-gray-900 font-playfair">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-[#8B1B3F]">
                 {content[lang].success.title}
               </h2>
-              <p className="text-lg md:text-xl text-gray-600">
+              <p className="text-lg md:text-xl text-gray-700">
                 {content[lang].success.subtitle}
               </p>
             </div>
@@ -501,7 +484,7 @@ export default function Page() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {content[lang].success.stories.map((story, index) => (
                 <div key={index} className="scroll-animation scroll-delay-1">
-                  <div className="relative h-[250px] md:h-[300px] rounded-3xl overflow-hidden mb-6">
+                  <div className="relative h-[250px] md:h-[300px] rounded-3xl overflow-hidden mb-6 border border-[#8B1B3F]/10">
                     <Image 
                       src={`/images/photo-${index + 2}.jpg`}
                       alt={`Success Story ${index + 1}`}
@@ -509,10 +492,10 @@ export default function Page() {
                       className="object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900">
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-[#8B1B3F]">
                     {story.title}
                   </h3>
-                  <p className="text-base md:text-lg text-gray-600">
+                  <p className="text-base md:text-lg text-gray-700">
                     {story.description}
                   </p>
                 </div>
@@ -525,7 +508,7 @@ export default function Page() {
         <section className="py-20 md:py-24 px-6 bg-white">
           <div className="max-w-[1000px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-              <div className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden">
+              <div className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden border border-[#8B1B3F]/10">
                 <Image 
                   src="/images/photo-1.jpg"
                   alt="Financial Consulting"
@@ -534,16 +517,16 @@ export default function Page() {
                 />
               </div>
               <div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-gray-900 font-playfair">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-[#8B1B3F]">
                   {content[lang].why.title}
                 </h2>
                 <div className="space-y-4 md:space-y-6">
                   {content[lang].why.items.map((item, index) => (
-                    <div key={index} className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                      <h3 className="text-lg md:text-xl font-bold mb-2 text-gray-900">
+                    <div key={index} className="bg-[#FDF6F2] p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-[#8B1B3F]/10">
+                      <h3 className="text-lg md:text-xl font-bold mb-2 text-[#8B1B3F]">
                         {item.title}
                       </h3>
-                      <p className="text-base md:text-lg text-gray-600">
+                      <p className="text-base md:text-lg text-gray-700">
                         {item.description}
                       </p>
                     </div>
@@ -555,15 +538,15 @@ export default function Page() {
         </section>
 
         {/* Contact Form Section */}
-        <section id="contact-form" className="py-20 md:py-24 px-6 bg-gradient-to-b from-white to-rose-50">
+        <section id="contact-form" className="py-20 md:py-24 px-6 bg-gradient-to-b from-white to-[#FDF6F2]">
           <div className="max-w-[600px] mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-gray-900 font-playfair">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-[#8B1B3F]">
               {content[lang].contact.title}
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 mb-8 md:mb-10 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-700 mb-8 md:mb-10 leading-relaxed">
               {content[lang].contact.subtitle}
             </p>
-            <div className="bg-white rounded-3xl shadow-xl shadow-rose-100/20 overflow-hidden p-6 md:p-8">
+            <div className="bg-white rounded-3xl shadow-xl shadow-[#8B1B3F]/10 overflow-hidden p-6 md:p-8 border border-[#8B1B3F]/10">
               <form 
                 action="https://formspree.io/f/YOUR_FORM_ID" 
                 method="POST"
@@ -580,7 +563,7 @@ export default function Page() {
                           name={key}
                           id={key}
                           rows={4}
-                          className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors text-gray-900"
+                          className="w-full px-4 py-3 rounded-xl border border-[#8B1B3F]/20 focus:border-[#8B1B3F] focus:ring focus:ring-[#8B1B3F]/20 focus:ring-opacity-50 transition-colors text-gray-900"
                         />
                       ) : (
                         <input
@@ -588,7 +571,7 @@ export default function Page() {
                           name={key}
                           id={key}
                           required
-                          className="w-full px-4 py-3 rounded-xl border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-colors text-gray-900"
+                          className="w-full px-4 py-3 rounded-xl border border-[#8B1B3F]/20 focus:border-[#8B1B3F] focus:ring focus:ring-[#8B1B3F]/20 focus:ring-opacity-50 transition-colors text-gray-900"
                         />
                       )}
                     </div>
@@ -597,7 +580,7 @@ export default function Page() {
                 <div className="text-center pt-4 md:pt-6">
                   <button
                     type="submit"
-                    className="inline-flex justify-center items-center px-8 md:px-12 py-3 md:py-4 text-lg md:text-xl font-medium text-white bg-rose-600 hover:bg-rose-700 rounded-full shadow-lg shadow-rose-200/50 transition-all hover:shadow-xl hover:shadow-rose-200/50"
+                    className="inline-flex justify-center items-center px-8 md:px-12 py-3 md:py-4 text-lg md:text-xl font-medium text-white bg-[#8B1B3F] hover:bg-[#6B1431] rounded-full shadow-lg shadow-[#8B1B3F]/20 transition-all hover:shadow-xl hover:shadow-[#8B1B3F]/30"
                   >
                     {content[lang].contact.form.submit}
                   </button>
@@ -608,9 +591,9 @@ export default function Page() {
         </section>
       </main>
 
-      <footer className="py-8 md:py-10 px-6 border-t border-rose-100 bg-white">
+      <footer className="py-8 md:py-10 px-6 border-t border-[#8B1B3F]/10 bg-white">
         <div className="max-w-[1000px] mx-auto text-center">
-          <p className="text-base md:text-lg text-gray-600">
+          <p className="text-base md:text-lg text-gray-700">
             {content[lang].footer.copyright}
           </p>
         </div>
